@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,SAAU;EACR,KAAK,EAAE,KAAK",
+"sources": ["../../../src/scss/hoge.scss"],
+"names": [],
+"file": "hoge.css"
+}
