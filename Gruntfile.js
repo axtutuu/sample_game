@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.initConfig({
@@ -10,7 +11,7 @@ module.exports = function (grunt) {
         options: {
           port: 8000,
           hostname: '*',
-          base: '/Users/kawasaki-atsushi/workspace/game/game_01/public/src/jade/',
+          base: '/Users/kawasaki-atsushi/workspace/game/game_01/public/src',
           keepalive: true
         }
       }
@@ -31,16 +32,25 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          src: 'src/jade/*.jade',
+          src: ['src/jade/*.jade', 'src/*.jade'],
           dest: 'public',
           ext: '.html'
         }]
       }
     },
+
+    copy: {
+      js: {
+        expand: true,
+        src: 'src/js/*.js',
+        dest: 'public',
+        ext: '.js'
+      }
+    },
+
   });
 
-  grunt.registerTask('default', [ 'sass', 'jade', 'connect' ]);
-
+  grunt.registerTask('default', [ 'sass', 'jade', 'copy:js', 'connect' ]);
 };
 
 
