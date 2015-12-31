@@ -13,6 +13,8 @@ window.addEventListener('load', init);
 
 var SCREEN_WIDTH = 800;
 var SCREEN_HEIGHT = 600;
+var mikanX = 0;
+var lastTimeStamp = null;
 
 /**
  * 初期化
@@ -31,8 +33,19 @@ function init(){
   });
 }
 
-function update() {
+function update(timestamp) {
+
+  // 関数が呼び出される頻度はブラウザ依存 (fps単位)
   requestAnimationFrame(update);
+
+  var delta = 0; // 前回フレーム時間からの経過時間(sec)
+  if (lastTimeStamp != null) {
+    delta = (timestamp - lastTimeStamp) / 1000;
+  }
+  lastTimeStamp = timestamp;
+
+  // 1秒あたり100pxを動かす
+  mikanX += 200 * delta;
 
   render();
 }
@@ -45,7 +58,7 @@ function render() {
   ctx.drawImage(Asset.images['back'], 0, 0);
 
   // みかん箱を表示
-  ctx.drawImage(Asset.images['box'], 0, 0);
+  ctx.drawImage(Asset.images['box'], mikanX, 0);
 }
 
 
