@@ -45,12 +45,17 @@ module.exports = function (grunt) {
         src: 'src/js/*.js',
         dest: 'public',
         ext: '.js'
+      },
+      images: {
+        expand: true,
+        src: 'src/images/*',
+        dest: 'public',
       }
     },
 
   });
 
-  grunt.registerTask('default', [ 'sass', 'jade', 'copy:js', 'connect' ]);
+  grunt.registerTask('default', [ 'sass', 'jade', 'copy:js', 'copy:images','connect' ]);
 };
 
 
