@@ -45,7 +45,7 @@ function update(timestamp) {
   lastTimeStamp = timestamp;
 
   // 1秒あたり100pxを動かす
-  mikanX += 200 * delta;
+  mikanX += 100 * delta;
 
   render();
 }
